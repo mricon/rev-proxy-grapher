@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<nmaprun scanner="nmap" args="faked" start="1505498106" startstr="Fri Sep 15 17:55:06 2017" version="6.40" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="192.168.1.10" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="example.com" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="22">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="ssh" product="OpenSSH" version="6.1" extrainfo="protocol 2.0" method="probed" conf="10">
+                <cpe>cpe:/a:openbsd:openssh:6.1</cpe>
+            </service>
+        </port>
+        <port protocol="tcp" portid="25">
+            <state state="open" reason="syn-ack" reason_ttl="51"/>
+            <service name="smtp" product="Postfix smtpd" hostname="mail.example.com" method="probed" conf="10">
+                <cpe>cpe:/a:postfix:postfix</cpe>
+            </service>
+        </port>
+        <port protocol="tcp" portid="443">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="http" product="nginx" version="1.12.0" method="probed" conf="10">
+                <cpe>cpe:/a:igor_sysoev:nginx:1.12.0</cpe>
+            </service>
+        </port>
+        <port protocol="tcp" portid="9418">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="git" method="table" conf="3"/>
+        </port>
+        <port protocol="tcp" portid="587">
+            <state state="open" reason="syn-ack" reason_ttl="51"/>
+            <service name="smtp" product="Postfix smtpd" hostname="mail.example.com" method="probed" conf="10">
+                <cpe>cpe:/a:postfix:postfix</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="10.0.25.100" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="mail1.mail.int" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="25">
+            <state state="open" reason="syn-ack" reason_ttl="51"/>
+            <service name="smtp" product="Postfix smtpd" hostname="mail.example.com" method="probed" conf="10">
+                <cpe>cpe:/a:postfix:postfix</cpe>
+            </service>
+        </port>
+        <port protocol="tcp" portid="587">
+            <state state="open" reason="syn-ack" reason_ttl="51"/>
+            <service name="smtp" product="Postfix smtpd" hostname="mail.example.com" method="probed" conf="10">
+                <cpe>cpe:/a:postfix:postfix</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="192.168.1.100" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="jump.example.com" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="22">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="ssh" product="OpenSSH" version="5.3" extrainfo="protocol 2.0" method="probed" conf="10">
+                <cpe>cpe:/a:openbsd:openssh:5.3</cpe>
+            </service>
+        </port>
+        <port protocol="tcp" portid="43022">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="ssh" product="OpenSSH" version="5.3" extrainfo="protocol 2.0" method="probed" conf="10">
+                <cpe>cpe:/a:openbsd:openssh:5.3</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="10.0.0.10" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="git-master.jump.int" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="22">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="ssh" product="OpenSSH" version="6.1" extrainfo="protocol 2.0" method="probed" conf="10">
+                <cpe>cpe:/a:openbsd:openssh:6.1</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="10.0.0.100" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="devs.jump.int" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="22">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="ssh" product="OpenSSH" version="5.3" extrainfo="protocol 2.0" method="probed" conf="10">
+                <cpe>cpe:/a:openbsd:openssh:5.3</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="10.0.200.100" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="static.web.int" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="80">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="http" product="nginx" version="1.12.0" method="probed" conf="10">
+                <cpe>cpe:/a:igor_sysoev:nginx:1.12.0</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<host>
+    <status state="up" reason="echo-reply" reason_ttl="52"/>
+    <address addr="10.0.200.120" addrtype="ipv4"/>
+    <hostnames>
+        <hostname name="pubgit.web.int" type="PTR"/>
+    </hostnames>
+    <ports>
+        <port protocol="tcp" portid="80">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="http" product="Apache httpd" version="2.2.15" extrainfo="(Red Hat)" method="probed" conf="10">
+                <cpe>cpe:/a:apache:http_server:2.2.15</cpe>
+            </service>
+        </port>
+    </ports>
+</host>
+<runstats>
+    <finished time="1505500017" timestr="Fri Sep 15 18:26:57 2017" elapsed="1911.20" summary="Nmap done at Fri Sep 15 18:26:57 2017; 256 IP addresses (2 hosts up) scanned in 1911.20 seconds" exit="success"/><hosts up="2" down="254" total="256"/>
+</runstats>
+</nmaprun>

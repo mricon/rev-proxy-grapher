@@ -48,9 +48,16 @@ Examples
 See output of --help, and examples in the examples directory. To
 generate an example graph of your own, simply run::
 
-    python3 rev-proxy-grapher.py --topology examples/topology.yaml
+    rev-proxy-grapher.py --topology examples/topology.yaml
 
 This will generate graph.png if everything worked well.
+
+If you want to see what is added by running nmap::
+
+    rev-proxy-grapher.py \
+        --topology examples/topology.yaml \
+        --nmap-xml examples/nmap-external.xml \
+        --out graph-with-nmap.svg
 
 Limitations
 ~~~~~~~~~~~
