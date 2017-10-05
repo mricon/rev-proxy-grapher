@@ -1,0 +1,50 @@
+---
+subnets:
+  dmz:
+    cidr: '192.168.1.0/24'
+    color: 'orange'
+
+  webapps:
+    cidr: '10.0.200.0/24'
+    color: 'blue'
+
+  mailhosts:
+    cidr: '10.0.25.0/24'
+    color: 'purple'
+
+  jumphosts:
+    cidr: '10.0.0.0/24'
+    color: 'red'
+
+clusters:
+  'php-fpm.web':
+    ips:
+      - '10.0.200.0/29'
+
+  'ha-cluster.dmz':
+    ips:
+      - '192.168.1.11'
+      - '192.168.1.12'
+    vips:
+      - '192.168.1.10'
+
+proxies:
+  192.168.1.10:
+    22:
+      haproxy: '10.0.0.10'
+    25:
+      dnat: '10.0.25.100'
+    443:
+      nginx:
+        'www.example.com': '10.0.200.100:80'
+        'www.example.com/blog': 'php-fpm.web:80'
+        'git.example.com': '10.0.200.120:80'
+        'mail.example.com': '10.0.25.100:80'
+    587:
+      dnat: '10.0.25.100'
+
+  192.168.1.100:
+    22:
+      haproxy: '10.0.0.100'
+    43022:
+      haproxy: '10.0.0.100:22'
