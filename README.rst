@@ -39,9 +39,9 @@ When run with --help::
 
 Requirements
 ~~~~~~~~~~~~
-  - python3-pydotplus
-  - python3-PyYAML
-  - python3-netaddr
+- python3-pydotplus
+- python3-PyYAML
+- python3-netaddr
 
 Examples
 ~~~~~~~~
@@ -61,4 +61,4 @@ anyway.
 
 Authors
 ~~~~~~~
-  - Konstantin Ryabitsev <konstantin@linuxfoundation.org>
+- Konstantin Ryabitsev <konstantin@linuxfoundation.org>
