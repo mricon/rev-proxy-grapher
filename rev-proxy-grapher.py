@@ -88,7 +88,12 @@ def load_nodes_from_nmap_xml(nmapxml):
                 for port in ports:
                     if tcp[port]['state'] != 'open':
                         continue
-                    node.add_port(port)
+                    prodver = None
+                    if 'product' in tcp[port] and len(tcp[port]['product']):
+                        prodver = tcp[port]['product']
+                        if 'version' in tcp[port] and len(tcp[port]['version']):
+                            prodver += '/' + tcp[port]['version']
+                    node.add_port(port, prodver)
 
 
 class Cluster:
@@ -170,6 +175,8 @@ class Node:
 
         # Dictionary of portnum=>list of proxy tuples
         self.ports = {}
+        # If there is cpe info in the nmap file, put it here
+        self.prodvers = {}
 
         self.is_src_node = False
         self.is_on_graph = False
@@ -186,10 +193,12 @@ class Node:
         if proxy not in myport:
             self.ports[portnum].append(proxy)
 
-    def add_port(self, portnum):
+    def add_port(self, portnum, prodver=None):
         portnum = int(portnum)
         if portnum not in self.ports:
             self.ports[portnum] = []
+        if prodver:
+            self.prodvers[portnum] = prodver
 
     def draw(self, graph, resolve_dns=False):
         if self.is_on_graph:
@@ -210,7 +219,19 @@ class Node:
 
         # make the ports label
         # we need to add <p_foo> endpoint parts for each port
-        plabel = '%s' % '|'.join('<p_%s>%s' % (port, port) for port in sorted(self.ports.keys()))
+        pary = []
+        for portnum in sorted(self.ports.keys()):
+            try:
+                service = socket.getservbyport(portnum)
+            except OSError:
+                service = 'unknown'
+
+            if portnum in self.prodvers and len(self.prodvers[portnum]):
+                pary.append('<p_%s>%s/%s\n[%s]' % (portnum, portnum, service, self.prodvers[portnum]))
+            else:
+                pary.append('<p_%s>%s/%s' % (portnum, portnum, service))
+
+        plabel = '%s' % '|'.join(pary)
         hlabel = str(self.ip)
 
         if not self.hostname and resolve_dns:
