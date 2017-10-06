@@ -51,6 +51,12 @@
                 <cpe>cpe:/a:postfix:postfix</cpe>
             </service>
         </port>
+        <port protocol="tcp" portid="80">
+            <state state="open" reason="syn-ack" reason_ttl="52"/>
+            <service name="http" product="nginx" version="1.12.0" method="probed" conf="10">
+                <cpe>cpe:/a:igor_sysoev:nginx:1.12.0</cpe>
+            </service>
+        </port>
         <port protocol="tcp" portid="587">
             <state state="open" reason="syn-ack" reason_ttl="51"/>
             <service name="smtp" product="Postfix smtpd" hostname="mail.example.com" method="probed" conf="10">
