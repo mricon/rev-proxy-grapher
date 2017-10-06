@@ -6,6 +6,11 @@ file describing the topology of your network, proxy definitions, and
 optionally a collection of nmap output files for additional port/service
 information and output a graph in any format supported by graphviz.
 
+.. image:: https://raw.githubusercontent.com/mricon/rev-proxy-grapher/master/examples/graph.png
+   :alt: Example graph produced
+   :width: 100%
+   :align: center
+
 Usage
 ~~~~~
 When run with --help::
