@@ -284,7 +284,7 @@ class Node:
     def draw_proxies(self, graph, resolve_dns=False):
         method_nodes = {}
         drawn_edges = []
-        for portnum, proxies in self.ports.items():
+        for portnum, proxies in sorted(self.ports.items()):
             for proxy in proxies:
                 (method, logic, dst_node, dst_port) = proxy
                 dst_node.draw(graph, resolve_dns)
