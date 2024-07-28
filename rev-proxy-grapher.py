@@ -245,10 +245,10 @@ class Node:
         hostname = self.hostname
 
         if self.hostname and self.subnet and len(self.subnet.trimdomain):
-            hostname = re.sub('\.%s$' % self.subnet.trimdomain, '', self.hostname)
+            hostname = re.sub(r'\.%s$' % self.subnet.trimdomain, '', self.hostname)
 
         if hostname:
-            hlabel = '%s\n\%s' % (self.ip, hostname)
+            hlabel = r'%s\n%s' % (self.ip, hostname)
 
         if self.cluster and self.cluster.has_vip(self.ip):
             hlabel = '%s\n%s' % ('VIP', hlabel)
